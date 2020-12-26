@@ -12,11 +12,13 @@
 
 
 
- WiGLMongoDB.connect(process.env.WiGLMongoDbConnection, {useNewUrlParser:true, useUnifiedTopology:true}, (err) => {
+ WiGLMongoDB.connect(process.env.WiGLMongoDbConnection, 
+    {useNewUrlParser:true, useUnifiedTopology:true}, (err) => {
      if (WiGLMongoDB.connection.readyState !== 1) {
          console.log('WiGL MongoDB Connection Not Established');
-        //  console.log(process.env.WiGLMongoDbConnection);
-         console.log(err.errmsg);
+         console.log(process.env.WiGLMongoDbConnection);
+         console.log(WiGLMongoDB.connection.readyState);
+         //console.log(err.errmsg);
      } else {
          console.log('WiGL MongoDB Connection Established');
          console.log(WiGLMongoDB.connection.readyState);
