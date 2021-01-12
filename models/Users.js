@@ -11,6 +11,7 @@ const Users = mongoose.Schema({
     otherNames: String,
     email: String,
     password: String,
+    templateSelection: Number,
     resume:[resume], // *a user can have more than one resume 
     coverLetter: [], // **a user can have more than one cover letter
     accountType: String, // account type will be used to differentiate between free accounts and paid accounts

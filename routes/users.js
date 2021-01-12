@@ -18,8 +18,21 @@ const USER_UPDATED = 'USER_UPDATED'
 const USER_DELETED = 'USER_DELETED'
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', async function (req, res, next) {
+  
+  try {
+    const users = await user.find();
+    res.status(200);
+    res.json({
+      data: users,
+    })
+  } catch (err) {
+    console.log(`An Error occurred: ${err}`);
+    res.status(404);
+    res.json({
+      message: 'No data'
+    })
+  }
 });
 
 /**Create new user account */
@@ -30,6 +43,7 @@ router.post('/create_account', async function (req, res) {
     lastName: req.body.lastName,
     otherNames: req.body.otherNames,
     email: req.body.email,
+    templateSelection: req.body.templateSelection,
     password: passwordEncrypt.passwordHash(req.body.password),
     accountType: 'free'
   };
@@ -49,12 +63,15 @@ router.post('/create_account', async function (req, res) {
       lastName: newUser.lastName,
       otherNames: newUser.otherNames,
       email: newUser.email,
+      templateSelection: newUser.templateSelection,
       password: newUser.password,
       accountType: newUser.accountType
     });
 
+    // todo :: check if user exists before saving user
     try {
       const response = await User.save();
+      // todo :: consider email sending upon successful registration
       res.status(200);
       res.json({
         status: USER_CREATED,
