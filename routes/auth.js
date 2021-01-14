@@ -34,6 +34,7 @@ router.post('/login', async function (req, res, err) {
                 res.status(200);
                 res.json({
                     message: LOGIN_SUCCESS,
+                    status: 200,
                     data: userAccount
                 });
             } else {
