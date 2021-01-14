@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var resume = require('./Resumes');
 const Users = mongoose.Schema({
     firstName: String,
-    LastName: String,
+    lastName: String,
     otherNames: String,
     email: String,
     password: String,
