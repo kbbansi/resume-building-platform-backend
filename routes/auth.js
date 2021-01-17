@@ -12,6 +12,7 @@ let auth, passwordCheck, encryptedPassword;
 const BAD_REQUEST = 'BAD_REQUEST';
 const SERVER_ERROR = 'INTERNAL_SERVER_ERROR';
 const NOT_FOUND = 'NOT_FOUND';
+// Needed error messages
 
 /**Login Success */
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
